@@ -2,7 +2,52 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h4 style="color:purple">
+    <b>dieren</b>    @ViewBag.TotalAnimals <br />
+    <b>wagons</b>    @ViewBag.TotalWagons <br />
+</h4>
+    <hr />
+
+    <form asp-action="AnimalForm" method="post" class="form-group">
+        <table>
+            <tr>
+                <td></td>
+                <td>Carnivore</td>
+                <td>Herbivore</td>
+            </tr>
+            <tr>
+                <td>Small</td>
+                <td><input class="form-control" type="number" name="CS" /></td>
+                <td><input class="form-control" type="number" name="HS" /></td>
+            </tr>
+            <tr>
+                <td>Medium</td>
+                <td><input class="form-control" type="number" name="CM" /></td>
+                <td><input class="form-control" type="number" name="HM" /></td>
+            </tr>
+            <tr>
+                <td>Large</td>
+                <td><input class="form-control" type="number" name="CL" /></td>
+                <td><input class="form-control" type="number" name="HL" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input class="btn btn-primary" type="submit" value="Submit Form" /></td>
+            </tr>
+        </table>
+    </form>@*
+<h4 style="color:purple">
+    <b>ID:</b>    @ViewBag.ID <br />
+    <b>Name:</b>  @ViewBag.Name <br />
+    <b>Addon:</b> @ViewBag.Addon
+</h4>
+<hr />
+<h3><b>Forms: Weakly Typed</b></h3>
+
+<form action="/form1/" method="post">
+    <table>
+
+        <tr>
+            <td colspan="2"><input type="submit" value="Submit Form" /></td>
+        </tr>
+    </table>
+</form>*@
