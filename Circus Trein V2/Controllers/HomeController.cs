@@ -33,7 +33,10 @@ namespace Circus_Trein_V2.Controllers
             int[] animals = { CS, CM, CL, HS, HM, HL };
             // Train train = Sort.SortAnimals(animals)
             ViewBag.TotalAnimals = animals.Sum();
-            Train train = new Train(animals);
+            //Train train = new Train(animals);
+
+            Sort sorter = new Sort();
+            Train train = new Train(sorter.Start(animals));
 
             ViewBag.TotalWagons = train.Wagons.Count;
 
