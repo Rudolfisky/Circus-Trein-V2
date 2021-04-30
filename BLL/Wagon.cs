@@ -28,6 +28,42 @@ namespace Logic
             Animals = new List<Animal>();
             IsFull = aIsFull;
         }
+        public bool CanHave(Animal unSortedAnimal) 
+        { 
+            bool compatible = true;
+            if (IsFull)
+            {
+                //wagon is full
+                compatible = false;
+            }
+
+            if (compatible && GetAvailableSpace() < (int)unSortedAnimal.Size)
+            {
+                //wagon has no space for the animal
+                compatible = false;
+            }
+
+            if (compatible && !CheckAnimalCompatiblility(unSortedAnimal))
+            {
+                //there is a animal in this wagon that isnt compatible with the unSortedAnimal
+                compatible = false;
+            }
+
+            return compatible;
+        }
+        bool CheckAnimalCompatiblility(Animal unSortedAnimal) 
+        {
+            bool compatible = true;
+            foreach (var wagonAnimal in Animals)
+            {
+                if (!wagonAnimal.IscompatibleWith(unSortedAnimal))
+                {
+                    compatible = false;
+                }
+
+            }
+            return compatible;
+        }
         public int GetAvailableSpace() 
         {
             int space = 10 - GetUsedSpace();
@@ -53,6 +89,10 @@ namespace Logic
                 }
             }
             return CC;
+        }
+        public override string ToString()
+        {           
+            return "animals:" + Animals.Count().ToString() + "; isFull:" + IsFull.ToString();
         }
     }
 }

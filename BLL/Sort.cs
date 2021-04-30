@@ -10,10 +10,13 @@ namespace Logic
     {
         List<Wagon> Wagons { get; }
         List<Animal> Animals { get; }
+
+        List<Animal> wagonAnimals = new List<Animal>();
         public Sort() 
         {
             Animals = new List<Animal>();
             Wagons = new List<Wagon>();
+            List<Animal> wagonAnimals = new ();
         }
         public List<Wagon> Start(int[] aAnimals) 
         { 
@@ -24,56 +27,71 @@ namespace Logic
         }
         void SortAnimals()
         {
-
-            Console.WriteLine(Animals);
-            List<int> somethings = new List<int>();
-            List<Animal> wagonAnimals = new List<Animal>();
-            //AddWagon();
-            Console.WriteLine(Animals);
+           
             foreach (Animal animal in Animals)
             {
-                Console.WriteLine(animal);
-
-                if (animal.Type == Type.Carnivore && animal.Size == Size.Large)
+                // new start
+                if (animal.Type == Type.Carnivore)
                 {
-                    wagonAnimals.Add(animal);
-
-                    AddWagon(wagonAnimals, true);
-                    Console.WriteLine(animal);
-                    somethings.Add((int)animal.Size);
-                    Console.WriteLine(somethings);
-                    wagonAnimals = new List<Animal>();
+                    AnimalIsCarnivore(animal);
                 }
+                // new end
 
-                if (animal.Type == Type.Carnivore && animal.Size != Size.Large)
-                {
-                    wagonAnimals.Add(animal);
-                    AddWagon(wagonAnimals, false);
-                    wagonAnimals = new List<Animal>();
-                }
+                // old start
+                //if (animal.Type == Type.Carnivore && animal.Size == Size.Large)
+                //{
+                //    wagonAnimals.Add(animal);
+
+                //    AddWagon(wagonAnimals, true);
+                //    Console.WriteLine(animal);
+                //    somethings.Add((int)animal.Size);
+                //    Console.WriteLine(somethings);
+                //    wagonAnimals = new List<Animal>();
+                //}
+
+                //if (animal.Type == Type.Carnivore && animal.Size != Size.Large)
+                //{
+                //    wagonAnimals.Add(animal);
+                //    AddWagon(wagonAnimals, false);
+                //    wagonAnimals = new List<Animal>();
+                //}
+                // old end
                 if (animal.Type == Type.Herbivore)
                 {
                     bool sorted = false;
                     foreach (var wagon in Wagons)
                     {
-
+                        //new start
                         if (!wagon.IsFull && !sorted)
                         {
-
-                            int AvailableSpace = wagon.GetAvailableSpace();
-                            Console.WriteLine(AvailableSpace);
-                            if (AvailableSpace >= (int)animal.Size)
+                            if (wagon.CanHave(animal))
                             {
-                                Console.WriteLine("space available");
-                                if (wagon.ContainsCarnivore() < (int)animal.Size)
-                                {
-                                    Console.WriteLine("no bigger carnivore");
-                                    wagon.Animals.Add(animal);
-                                    sorted = true;
-                                }
+                                Console.WriteLine("no bigger carnivore");
+                                wagon.Animals.Add(animal);
+                                sorted = true;
                             }
-
                         }
+                        //new end
+
+                        //old start
+                        //if (!wagon.IsFull && !sorted)
+                        //{
+
+                        //    int AvailableSpace = wagon.GetAvailableSpace();
+                        //    Console.WriteLine(AvailableSpace);
+                        //    if (AvailableSpace >= (int)animal.Size)
+                        //    {
+                        //        Console.WriteLine("space available");
+                        //        if (wagon.ContainsCarnivore() < (int)animal.Size)
+                        //        {
+                        //            Console.WriteLine("no bigger carnivore");
+                        //            wagon.Animals.Add(animal);
+                        //            sorted = true;
+                        //        }
+                        //    }
+
+                        //}
+                        //new end
                         if (wagon.GetAvailableSpace() == 0)
                         {
                             Console.WriteLine("no more space");
@@ -102,8 +120,24 @@ namespace Logic
                 }
                 Console.WriteLine(Wagons);
             }
-            Console.WriteLine(somethings);
             Console.WriteLine(Wagons);
+        }
+        void AnimalIsCarnivore(Animal unSortedAnimal) 
+        {
+            if (unSortedAnimal.Type == Type.Carnivore && unSortedAnimal.Size == Size.Large)
+            {
+                wagonAnimals.Add(unSortedAnimal);
+
+                AddWagon(wagonAnimals, true);
+                wagonAnimals = new List<Animal>();
+            }
+
+            if (unSortedAnimal.Type == Type.Carnivore && unSortedAnimal.Size != Size.Large)
+            {
+                wagonAnimals.Add(unSortedAnimal);
+                AddWagon(wagonAnimals, false);
+                wagonAnimals = new List<Animal>();
+            }
         }
         void MakeAnimals(int[] aAnimals)
         {
