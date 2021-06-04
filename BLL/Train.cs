@@ -7,11 +7,36 @@ namespace Logic
 {
     public class Train
     {
-        public List<Wagon> Wagons { get; set; }
+        private List<Wagon> Wagons { get; set; } = new List<Wagon>();
+        public Train() { }
         public Train(List<Wagon> wagons)
         {
-            Wagons = new List<Wagon>();
             Wagons = wagons;
+        }
+        public IEnumerable<Animal> GetAllAnimals() 
+        {
+            List<Animal> animals = new List<Animal>();
+            foreach (var wagon in Wagons)
+            {
+                foreach (var animal in wagon.GetAnimals())
+                {
+                    animals.Add(animal);
+                }
+            }
+            return animals;
+        }
+        public IEnumerable<Wagon> GetAllWagons()
+        {
+            return Wagons;
+        }
+        public void addWagon(Animal animal) 
+        {
+            Console.WriteLine("test");
+            List<Animal> newAnimalList = new List<Animal>();
+            newAnimalList.Add(animal);
+            Wagon newWagon = new Wagon(newAnimalList);
+            Wagons.Add(newWagon);
+            Console.WriteLine(Wagons);
         }
 
     }

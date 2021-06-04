@@ -7,8 +7,9 @@ namespace Logic
 {
     public class Wagon
     {
-        public List<Animal> Animals { get; set; }
-        public bool IsFull { get; set; }
+        // make private
+        private List<Animal> Animals { get; set; }
+        public bool IsFull { get; }
 
         public Wagon(List<Animal> aAnimalsList) 
         {
@@ -28,7 +29,11 @@ namespace Logic
             Animals = new List<Animal>();
             IsFull = aIsFull;
         }
-        public bool CanHave(Animal unSortedAnimal) 
+        public List<Animal> GetAnimals() 
+        {
+            return Animals;
+        }
+        bool CanHave(Animal unSortedAnimal) 
         { 
             bool compatible = true;
             if (IsFull)
@@ -64,7 +69,7 @@ namespace Logic
             }
             return compatible;
         }
-        public int GetAvailableSpace() 
+        int GetAvailableSpace() 
         {
             int space = 10 - GetUsedSpace();
             return space;
@@ -78,17 +83,26 @@ namespace Logic
             }
             return space;
         }
-        public int ContainsCarnivore() 
+        //public int ContainsCarnivore() 
+        //{
+        //    int CC = 0;
+        //    foreach (Animal animal in Animals)
+        //    {
+        //        if (animal.Type == Type.Carnivore)
+        //        {
+        //            CC = (int)animal.Size;
+        //        }
+        //    }
+        //    return CC;
+        //}
+        public bool AddAnimal(Animal animal) 
         {
-            int CC = 0;
-            foreach (Animal animal in Animals)
+            if (CanHave(animal))
             {
-                if (animal.Type == Type.Carnivore)
-                {
-                    CC = (int)animal.Size;
-                }
+                Animals.Add(animal);
+                return true;
             }
-            return CC;
+            return false;
         }
         public override string ToString()
         {           

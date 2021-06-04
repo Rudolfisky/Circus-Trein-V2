@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Circus Trein V2", "Circus Trein V2\Circus Trein V2.csproj", "{3324B52B-07E5-41B4-BF9C-70F76DD3C51B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Circus Trein V2", "Circus Trein V2\Circus Trein V2.csproj", "{3324B52B-07E5-41B4-BF9C-70F76DD3C51B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logic", "BLL\Logic.csproj", "{7F3BA51D-200A-4B61-9F4F-DE19C10F8415}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicTests", "LogicTests\LogicTests.csproj", "{36565F2C-6D1A-48FA-9B5D-3BABE8890C0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{7F3BA51D-200A-4B61-9F4F-DE19C10F8415}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F3BA51D-200A-4B61-9F4F-DE19C10F8415}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F3BA51D-200A-4B61-9F4F-DE19C10F8415}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36565F2C-6D1A-48FA-9B5D-3BABE8890C0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36565F2C-6D1A-48FA-9B5D-3BABE8890C0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36565F2C-6D1A-48FA-9B5D-3BABE8890C0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36565F2C-6D1A-48FA-9B5D-3BABE8890C0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
