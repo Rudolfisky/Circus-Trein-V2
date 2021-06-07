@@ -18,7 +18,7 @@ namespace Logic.Tests
             Train train = new Train();
             Animal animal = new Animal(Type.Carnivore, Size.Medium);
             //act
-            train.addWagon(animal);
+            train.addToNewWagon(animal);
             Console.WriteLine(train);
             //assert            
             Assert.IsTrue(train.GetAllWagons().Count() == 1);

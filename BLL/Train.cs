@@ -29,12 +29,12 @@ namespace Logic
         {
             return Wagons;
         }
-        public void addWagon(Animal animal) 
+        public void addToNewWagon(Animal animal) 
         {
-            Console.WriteLine("test");
-            List<Animal> newAnimalList = new List<Animal>();
-            newAnimalList.Add(animal);
-            Wagon newWagon = new Wagon(newAnimalList);
+            //List<Animal> newAnimalList = new List<Animal>();
+            //newAnimalList.Add(animal);
+            Wagon newWagon = new Wagon();
+            newWagon.AddAnimal(animal);
             Wagons.Add(newWagon);
             Console.WriteLine(Wagons);
         }

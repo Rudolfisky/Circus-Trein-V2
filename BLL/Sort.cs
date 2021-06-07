@@ -41,23 +41,23 @@ namespace Logic
         }
         void AnimalIsCarnivore(Animal unSortedAnimal) 
         {
-            train.addWagon(unSortedAnimal);
+            train.addToNewWagon(unSortedAnimal);
         }
         void AnimalIsHerbivore(Animal animal) 
         {
+            // bool used for keeping track of the sort state of the curent animal
             bool sorted = false;
-
             foreach (var wagon in train.GetAllWagons())
             {
+                //check if the animal has been sorted into a wagon
                 if (!sorted)
                 {
                     if (wagon.AddAnimal(animal)) sorted = true;
                 }
 
             }
-
-            //check if animal has been added to a wagon, if not, add it to a new one
-            if (!sorted) train.addWagon(animal);
+            //check if animal has been sorted to a wagon, if not, add it to a new one
+            if (!sorted) train.addToNewWagon(animal);
         }
         // convert array with numbers into Animals
         void MakeAnimals(int[] aAnimals)
