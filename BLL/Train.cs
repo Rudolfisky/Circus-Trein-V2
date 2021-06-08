@@ -38,6 +38,11 @@ namespace Logic
             Wagons.Add(newWagon);
             Console.WriteLine(Wagons);
         }
+        public override string ToString()
+        {
+            return "Wagons: " + Wagons.Count().ToString() + "; " +
+            "Animals: " + GetAllAnimals().Count() + "; ";
+        }
 
     }
 }

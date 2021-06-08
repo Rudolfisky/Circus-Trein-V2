@@ -40,7 +40,7 @@ namespace Circus_Trein_V2.Controllers
             Train train = sorter.Start(animals);
 
             ViewBag.TotalAnimals = train.GetAllAnimals().Count();
-            //ViewBag.TotalWagons = train.Wagons.Count();
+            ViewBag.TotalWagons = train.GetAllWagons().Count();
 
             return View("Index");
         }

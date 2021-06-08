@@ -18,9 +18,17 @@ namespace Logic
             Animals = new List<Animal>();
             List<Animal> wagonAnimals = new ();
         }
+        //start using array
         public Train Start(int[] aAnimals) 
         { 
             MakeAnimals(aAnimals);
+            SortAnimals();
+            return train;
+        }
+        //start using animal list
+        public Train Start(List<Animal> aAnimals)
+        {
+            ArrangeAnimals(aAnimals);
             SortAnimals();
             return train;
         }
@@ -92,6 +100,26 @@ namespace Logic
                 AddAnimal(Type.Herbivore, Size.Large);
                 i++;
             }
+        }
+        //ArrangeAnimals() is used to arrange an incoming list<Animal> so that it starts with carnivores
+        private void ArrangeAnimals(List<Animal> aAnimals)
+        {
+            List<Animal> seperatedAnimals = new List<Animal>();
+            foreach (var animal in aAnimals)
+            {
+                if (animal.Type == Type.Carnivore)
+                {
+                    seperatedAnimals.Add(animal);
+                }
+            }
+            foreach (var animal in aAnimals)
+            {
+                if (animal.Type == Type.Herbivore)
+                {
+                    seperatedAnimals.Add(animal);
+                }
+            }
+            Animals = seperatedAnimals;
         }
         void AddAnimal(Type aType, Size aSize)
         {

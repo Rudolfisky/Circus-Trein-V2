@@ -7,7 +7,6 @@ namespace Logic
 {
     public class Wagon
     {
-        // make private
         private List<Animal> Animals { get; set; } = new List<Animal>();
         public List<Animal> GetAnimals() 
         {
@@ -58,18 +57,6 @@ namespace Logic
             }
             return space;
         }
-        //public int ContainsCarnivore() 
-        //{
-        //    int CC = 0;
-        //    foreach (Animal animal in Animals)
-        //    {
-        //        if (animal.Type == Type.Carnivore)
-        //        {
-        //            CC = (int)animal.Size;
-        //        }
-        //    }
-        //    return CC;
-        //}
         public bool AddAnimal(Animal animal) 
         {
             if (CanHave(animal))
@@ -81,7 +68,7 @@ namespace Logic
         }
         public override string ToString()
         {           
-            return "animals:" + Animals.Count().ToString();
+            return "animals: " + Animals.Count().ToString();
         }
     }
 }

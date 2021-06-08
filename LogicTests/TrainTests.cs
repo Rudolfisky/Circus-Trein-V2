@@ -11,17 +11,22 @@ namespace Logic.Tests
     [TestClass()]
     public class TrainTests
     {
+        private Train _train;
+        [TestInitialize]
+        public void Setup()
+        {
+            _train = new Train();
+        }
         [TestMethod()]
         public void addWagon_AddNewWagonWithAnimal_Succeed()
         {
             //assign
-            Train train = new Train();
             Animal animal = new Animal(Type.Carnivore, Size.Medium);
             //act
-            train.addToNewWagon(animal);
-            Console.WriteLine(train);
+            _train.addToNewWagon(animal);
+            Console.WriteLine(_train);
             //assert            
-            Assert.IsTrue(train.GetAllWagons().Count() == 1);
+            Assert.IsTrue(_train.GetAllWagons().Count() == 1);
             //Assert.Fail();
         }
     }
